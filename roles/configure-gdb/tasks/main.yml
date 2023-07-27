@@ -1,0 +1,32 @@
+---
+- name: "Checking if GDB is pre-installed"
+  stat:
+    path: /usr/bin/gdb
+  register: gdb_installed
+
+- name: "Installing GDB"
+  apt:
+    name: gdb
+    state: present
+  become: true
+  become_method: sudo
+  when: gdb_installed.stat.exists == False
+
+- name: "Installing Pwndbg"
+  git:
+    repo: https://github.com/pwndbg/pwndbg.git
+    dest: ~/pwndbg-src
+  when: gdb_installed.stat.exists == False
+
+- name: "Run pwndbg setup.sh"
+  shell: ./setup.sh
+  args:
+    chdir: ~/pwndbg-src
+  when: gdb_installed.stat.exists == False
+
+- name: "Update ~/.gdbinit_pwndbg"
+  lineinfile:
+    path: ~/.gdbinit_pwndbg
+    line: "source ~/pwndbg-src/gdbinit.py"
+    create: yes
+  when: gdb_installed.stat.exists == False

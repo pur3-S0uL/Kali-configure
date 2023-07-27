@@ -1,0 +1,26 @@
+---
+- name: "Checking if CheckSec is pre-installed"
+  stat:
+    path: /usr/bin/checksec
+  register: checksec_installed
+
+- name: "Installing Checksec"
+  apt:
+    name: checksec
+    state: present
+  become: true
+  become_method: sudo
+  when: checksec_installed.stat.exists == False
+
+- name: "Checking if Ropper is pre-installed"
+  stat:
+    path: /usr/bin/ropper
+  register: ropper_installed
+
+- name: "Installing Ropper"
+  apt:
+    name: ropper
+    state: present
+  become: true
+  become_method: sudo
+  when: ropper_installed.stat.exists == False

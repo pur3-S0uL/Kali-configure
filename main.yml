@@ -1,0 +1,10 @@
+---
+- name: "Customizing Kali"
+  hosts: localhost
+  connection: local
+  tasks:
+
+  roles:
+    - "roles/configure-gdb"
+    - "roles/configure-ghidra"
+    - "roles/get-additional-tools-binex"
