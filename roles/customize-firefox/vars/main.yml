@@ -1,0 +1,8 @@
+---
+burpsuite_extras_dir: "/usr/local/lib/BurpSuite"
+
+FirefoxPlugins:
+  - "darkreader"
+  - "foxyproxy-standard"
+  - "wappalyzer"
+  - "cookie-editor"
