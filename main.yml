@@ -7,12 +7,12 @@
     - role: "roles/configure-ghidra"
     - role: "roles/get-additional-tools-binex"
     - role: "roles/customize-firefox"
-    - role: gantsign.visual-studio-code
-      users:
-        - username: "{{ ansible_user_id }}" 
-          visual_studio_code_extensions:
-            - streetsidesoftware.code-spell-checker
-            - bierner.docs-view
-            - ms-python.python
-            - ms-vscode.cpptools
-            - DEVSENSE.phptools-vscode
+#    - role: gantsign.visual-studio-code
+#      users:
+#        - username: "{{ ansible_user_id }}" 
+#          visual_studio_code_extensions:
+#            - streetsidesoftware.code-spell-checker
+#            - bierner.docs-view
+#            - ms-python.python
+#            - ms-vscode.cpptools
+#            - DEVSENSE.phptools-vscode
