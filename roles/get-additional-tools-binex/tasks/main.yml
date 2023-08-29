@@ -26,5 +26,5 @@
   when: ropper_installed.stat.exists == False
 
 - name: "Installing Pwntools"
-  - pip:
-      name: pwntools
+  pip:
+    name: pwntools
