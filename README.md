@@ -6,7 +6,7 @@ It will install and configure the following Tools:
 - GDB + Pwndbg
 - Ghidra + Ropper + CheckSec
 - Configuring Firebox + Burp
-- VsCode
+- ~VsCode~
 
 To Run the playbook
 
