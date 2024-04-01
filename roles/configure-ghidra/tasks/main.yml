@@ -12,22 +12,33 @@
   become_method: sudo
   when: ghidra_installed.stat.exists == False
 
+- name: "Checking if Ghidra Script is pre-installed"
+  stat:
+    path: ~/pwn/auto_ghidra.py
+  register: ghidra_script_installed
+
+- name: Create ~/pwn Directory
+  ansible.builtin.file:
+    path: ~/pwn
+    state: directory
+  when: ghidra_script_installed.stat.exists == False
+
 - name: "Download auto_ghidra.py script"
   get_url:
     url: https://raw.githubusercontent.com/Crypto-Cat/CTF/main/auto_ghidra.py
     dest: ~/pwn/auto_ghidra.py
-  when: ghidra_installed.stat.exists == False
+  when: ghidra_script_installed.stat.exists == False
 
 - name: Change GHIDRA_PATH in auto_ghidra.py
   replace:
     path: ~/pwn/auto_ghidra.py
     regexp: '^GHIDRA_PATH = .*'
     replace: "GHIDRA_PATH = '/usr/share/ghidra'"
-  when: ghidra_installed.stat.exists == False
+  when: ghidra_script_installed.stat.exists == False
 
 - name: "Create alias auto_ghidra"
   lineinfile:
     path: ~/.zshrc
     line: "alias auto_ghidra='python3 ~/pwn/auto_ghidra.py'"
     create: yes
-  when: ghidra_installed.stat.exists == False
+  when: ghidra_script_installed.stat.exists == False
