@@ -1,5 +1,5 @@
 ---
-- include: "burp.yml"
+- include_tasks: "burp.yml"
 - name: "Installing Firefox PlugIns"
   template:
     src: "templates/policies.json.j2"
