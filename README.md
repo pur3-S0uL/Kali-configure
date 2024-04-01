@@ -6,17 +6,12 @@ It will install and configure the following Tools:
 - GDB + Pwndbg
 - Ghidra + Ropper + CheckSec
 - Configuring Firebox + Burp
-- ~VsCode~
 
 To Run the playbook
 
-1. Install dependencies
-```bash
-ansible-galaxy install -r requirements.yml
-```
-2. get a sudo token by running `sudo id`
+1. get a sudo token by running `sudo id`
   
-3. Initialte playbook
+2. Initialte playbook
 ```bash
 ansible-playbook main.yml
 ```
